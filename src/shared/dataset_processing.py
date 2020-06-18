@@ -28,8 +28,10 @@ class DataProcessing:
         data = [self.REPLACE_WITH_SPACE.sub(" ", line) for line in data]
         return data
 
-    def save_processed_data(self,data,name):
+    def save_processed_data(self,data,name,label):
         data_frame = pd.DataFrame(data, columns=['text'])
+        label_list = [label for i in range(0,len(data))]
+        data_frame["label"] = label_list
         data_frame.to_pickle("./"+name+".pkl")
 
     def read_saved_data(self,name):
@@ -37,12 +39,10 @@ class DataProcessing:
 
 
 if __name__ == "__main__":
-    ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
-    TRAIN_NEG = os.path.abspath(os.path.join(ROOT_PATH, '../shared/imdb/train/neg'))
-    TRAIN_POS = os.path.abspath(os.path.join(ROOT_PATH, '../shared/imdb/train/pos'))
-    print(TRAIN_NEG)
+    TRAIN_NEG = "/home/protyush/Desktop/masters/NLP/imdb/train/neg"
+    TRAIN_POS = "/home/protyush/Desktop/masters/NLP/imdb/train/neg"
     files = [os.path.join(TRAIN_NEG, file_) for file_ in os.listdir(TRAIN_NEG)]
 
     TEST = DataProcessing()
     cleaned_data = [ TEST.read_file(file_path) for file_path in files]
-    TEST.save_processed_data(cleaned_data, "train_positive")
+    TEST.save_processed_data(cleaned_data, "train_positive",label=1)
