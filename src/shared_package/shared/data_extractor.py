@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from dataset_processing import DataProcessing
+from shared.dataset_processing import DataProcessing
 TEST = DataProcessing()
 ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.abspath(os.path.join(ROOT_PATH, '../shared/data'))
@@ -15,7 +15,7 @@ class DataExtractor:
             TRAIN_PATH = "/home/protyush/Desktop/masters/NLP/imdb/train/"
             TEST_PATH = "/home/protyush/Desktop/masters/NLP/imdb/test/"
             train = self.processing(TRAIN_PATH,"train")
-            test = self.processing(TEST_PATH,"train")
+            test = self.processing(TEST_PATH,"test")
             return [train,test]
 
         elif user_confirmation == 'y':
@@ -34,7 +34,7 @@ class DataExtractor:
         TRAIN_NEG = os.path.join(PATH, './neg')
         TRAIN_POS = os.path.join(PATH, './pos')
 
-        print(f"preparing training data from {TRAIN_PATH}")
+        print(f"preparing data from {PATH}")
         files = [os.path.join(TRAIN_NEG, file_) for file_ in os.listdir(TRAIN_NEG)]
         data = [TEST.read_file(file_path) for file_path in files]
         cleaned_data = [TEST.data_cleanup(element) for element in data]

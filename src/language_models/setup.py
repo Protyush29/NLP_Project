@@ -2,10 +2,9 @@ from setuptools import setup, find_packages
 
 
 setup(
-   name='searchtool_ingestion',
+   name='Language_models',
    version='1.0',
-   description="searchtool's ingestion package",
-   author='Fraunhofer IAIS',
+   description="Language models for comparison",
+   author='Protyush Kumar Das',
    packages=find_packages(),
-   install_requires=['flask', 'requests', 'pdfminer', 'pdfminer.six', 'tqdm', 'yapp'],
 )

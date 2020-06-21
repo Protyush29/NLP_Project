@@ -2,9 +2,9 @@ from setuptools import setup, find_packages
 
 
 setup(
-   name='Language_models',
+   name='shared',
    version='1.0',
-   description="Language models for comparison",
+   description="shared package for Language models comparison",
    author='Protyush Kumar Das',
    packages=find_packages(),
 )

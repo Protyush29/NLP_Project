@@ -36,23 +36,14 @@ class DataProcessing:
         return data_frame
 
     def save_dataframe(self,dataframe,name):
-        dataframe.to_pickle("./data/" + name + ".pkl")
+        dataframe.to_pickle(ROOT_PATH+"/data/"+name+".pkl")
         return None
 
     def read_saved_data(self,name):
-        return pd.read_pickle("./data/"+name+".pkl")
+        return pd.read_pickle(ROOT_PATH+"/data/"+name+".pkl")
 
     def merge_dataframes(self,df1,df2):
         return pd.concat([df1,df2])
-
-    def get_list_of_existing_files(self):
-        print("Do you want to use the existing files listed below?")
-        SHARED_PATH = os.path.abspath(os.path.join(ROOT_PATH, '../shared/data'))
-        files = [file for file in os.listdir(SHARED_PATH)]
-        print(files)
-        name = input("Input the name of the file or 'n' for no.\n")
-        if not name == 'n':
-            return self.read_saved_data(name)
 
 
 if __name__ == "__main__":
