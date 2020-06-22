@@ -40,8 +40,8 @@ class ImdbExtractor:
     def load_dataset(self, directory):
         pos_df = self.load_directory_data(os.path.join(directory, "pos"))
         neg_df = self.load_directory_data(os.path.join(directory, "neg"))
-        pos_df["label"] = 1
-        neg_df["label"] = 0
+        pos_df["polarity"] = 1
+        neg_df["polarity"] = 0
         return pd.concat([pos_df, neg_df]).sample(frac=1).reset_index(drop=True)
 
 

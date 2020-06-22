@@ -1,0 +1,4 @@
+INFO:root:creating dataset upto 150 words for memory saving
+INFO:root:dataset creation complete
+INFO:root:Building model using keras Model
+INFO:absl:Using /tmp/tfhub_modules to cache modules.
